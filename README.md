@@ -218,7 +218,7 @@ Based on this analysis, I recommend the following security measures:
 **Dariusz Piasecki**  
 📧 Email: d.piasecki@piaseckiphotos.com  
 🔗 LinkedIn: [linkedin.com/in/piaseckiphotos](https://linkedin.com/in/piaseckiphotos)  
-🐙 GitHub: [github.com/DariuszPiasecki](https://github.com/DariuszPiasecki)
+🐙 GitHub: [github.com/Dariusz-Piasecki](https://github.com/Dariusz-Piasecki)
 
 ---
 
