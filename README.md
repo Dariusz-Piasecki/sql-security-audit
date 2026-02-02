@@ -198,7 +198,7 @@ Based on this analysis, I recommend the following actions:
 **Dariusz Piasecki**  
 📧 Email: dariusz.piasecki.sec@gmail.com  
 🔗 LinkedIn: [linkedin.com/in/piaseckiphotos](https://linkedin.com/in/piaseckiphotos)  
-🐙 GitHub: [github.com/DariuszPiasecki](https://github.com/Dariusz-Piasecki)
+🐙 GitHub: [github.com/Dariusz-Piasecki](https://github.com/Dariusz-Piasecki)
 
 ---
 
