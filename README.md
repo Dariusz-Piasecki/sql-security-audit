@@ -20,22 +20,28 @@ This analysis helps enhance the organization's security posture by pinpointing p
 
 ## Database Schema
 
-The investigation is performed on two primary tables:
+The investigation uses data from two tables in the organization's security database.
 
-### `log_in_attempts`
-Tracks user access attempts with the following columns:
-- `username` – User account identifier
-- `login_date` – Date of login attempt
-- `login_time` – Time of login attempt
-- `country` – Origin country code (USA, CAN, MEX, GBR, etc.)
-- `success` – Login status (1 = successful, 0 = failed)
+### Table 1: `log_in_attempts`
 
-### `employees`
-Contains organizational employee data:
+This table records all login attempts with timestamps and geographic information.
+
+**Columns visible in the analysis:**
+- `username` – User account attempting login
+- `login_date` – Date of the login attempt
+- `login_time` – Time of the login attempt  
+- `country` – Country code where login originated (USA, CAN, GER, MEX)
+- `success` – Result of login attempt (0 = failed, 1 = successful)
+
+### Table 2: `employees`
+
+This table contains employee records and organizational assignments.
+
+**Columns visible in the analysis:**
 - `employee_id` – Unique employee identifier
-- `username` – Employee account name
-- `department` – Department assignment (Marketing, Sales, IT, etc.)
-- `office` – Office location identifier
+- `username` – Employee's account name
+- `department` – Assigned department (Marketing, Sales, etc.)
+- `office` – Office location code (e.g., East-102, South-001)
 
 ---
 
@@ -61,7 +67,7 @@ WHERE login_time > '18:00:00' AND success = 0;
 **Key Findings:**
 - **3 failed login attempts** detected after 18:00
 - Targeted accounts: `dp_admin` (2 attempts), `unknown_hacker` (1 attempt)
-- Geographic origins: USA, Canada, Great Britain
+- Geographic origins: USA, Canada, Germany
 - **Security Concern:** Potential brute-force attacks on administrative accounts during off-hours
 
 ---
@@ -110,7 +116,7 @@ WHERE country NOT LIKE 'MEX%';
 
 **Key Findings:**
 - **3 login attempts** from non-Mexico locations
-- Detected countries: USA, Canada, Great Britain
+- Detected countries: USA, Canada, Germany
 - **Security Concern:** Potential policy violations or compromised accounts accessing from unauthorized regions
 - **Recommendation:** Implement geo-blocking or multi-factor authentication for non-Mexico IP addresses
 
@@ -143,12 +149,19 @@ WHERE department LIKE '%Marketing%' OR department LIKE '%Sales%';
 
 ## Summary
 
-By applying SQL filters, I successfully isolated high-risk security events, including:
+By applying SQL filters, I successfully isolated high-risk security events:
 
-1. **After-Hours Monitoring:** Detected 3 failed login attempts during non-business hours, indicating potential brute-force attacks on administrative accounts
-2. **Temporal Analysis:** Identified 5 suspicious login attempts during a critical 48-hour suspected breach window
-3. **Geographic Anomalies:** Found 3 login attempts from unexpected countries (USA, CAN, GBR), violating geofencing policies
-4. **Department Audit:** Located 2 employees in high-risk departments (Marketing, Sales) requiring access review
+**1. After-Hours Monitoring**  
+Detected 3 failed login attempts during non-business hours, indicating potential brute-force attacks on administrative accounts.
+
+**2. Temporal Analysis**  
+Identified 5 suspicious login attempts during a critical 48-hour suspected breach window.
+
+**3. Geographic Anomalies**  
+Found 3 login attempts from unexpected countries (USA, CAN, GER), violating geofencing policies.
+
+**4. Department Audit**  
+Located 2 employees in high-risk departments (Marketing, Sales) requiring access review.
 
 ---
 
@@ -165,40 +178,47 @@ This systematic approach allows security teams to:
 
 ## Security Recommendations
 
-Based on this analysis, I recommend the following actions:
+Based on this analysis, I recommend the following security measures:
 
-1. **Implement IP-based geo-blocking** for login attempts from non-Mexico locations
-2. **Enable multi-factor authentication (MFA)** for all administrative accounts
-3. **Configure automated alerts** for failed login attempts after business hours
-4. **Conduct quarterly access reviews** for employees in Marketing and Sales departments
-5. **Establish rate-limiting** on login endpoints to prevent brute-force attacks
+| Priority | Recommendation | Implementation |
+|----------|----------------|----------------|
+| 🔴 **HIGH** | Implement IP-based geo-blocking for non-Mexico login attempts | Configure firewall rules to restrict access from unexpected regions |
+| 🔴 **HIGH** | Enable multi-factor authentication (MFA) for administrative accounts | Deploy MFA solution (e.g., Google Authenticator, Duo Security) |
+| 🟡 **MEDIUM** | Configure automated alerts for after-hours failed login attempts | Set up SIEM alerts for login failures outside business hours |
+| 🟡 **MEDIUM** | Conduct quarterly access reviews for Marketing and Sales departments | Schedule regular audits to verify employee access permissions |
+| 🟢 **LOW** | Establish rate-limiting on login endpoints | Implement login attempt throttling to prevent brute-force attacks |
 
 ---
 
 ## Tools & Technologies
 
-- **Database:** SQLite
-- **SQL Client:** DB Browser for SQLite
-- **Query Language:** SQL (Structured Query Language)
-- **Analysis Techniques:** Data filtering, pattern recognition, temporal analysis
+| Category | Tool/Technology | Purpose |
+|----------|----------------|---------|
+| **Database** | SQLite | Lightweight relational database management system |
+| **SQL Client** | DB Browser for SQLite | Visual tool for database queries and management |
+| **Query Language** | SQL (Structured Query Language) | Data retrieval and manipulation |
+| **Analysis Techniques** | Data filtering, pattern recognition, temporal analysis | Security incident investigation |
 
 ---
 
 ## Skills Demonstrated
 
-- SQL query construction with `WHERE`, `AND`, `OR`, `LIKE`, `NOT LIKE` operators
-- Security incident investigation and threat detection
-- Data analysis and pattern recognition in security logs
-- Professional technical documentation and reporting
+| Skill Category | Specific Skills |
+|----------------|-----------------|
+| **SQL Proficiency** | Query construction with `WHERE`, `AND`, `OR`, `LIKE`, `NOT LIKE` operators |
+| **Security Analysis** | Incident investigation, threat detection, vulnerability assessment |
+| **Data Analysis** | Pattern recognition in security logs, temporal analysis, anomaly detection |
+| **Documentation** | Professional technical reporting, clear communication of findings |
+| **Tools Expertise** | DB Browser for SQLite, SQL query optimization, database management |
 
 ---
 
 ## Contact
 
 **Dariusz Piasecki**  
-📧 Email: dariusz.piasecki.sec@gmail.com  
+📧 Email: d.piasecki@piaseckiphotos.com  
 🔗 LinkedIn: [linkedin.com/in/piaseckiphotos](https://linkedin.com/in/piaseckiphotos)  
-🐙 GitHub: [github.com/Dariusz-Piasecki](https://github.com/Dariusz-Piasecki)
+🐙 GitHub: [github.com/DariuszPiasecki](https://github.com/DariuszPiasecki)
 
 ---
 
