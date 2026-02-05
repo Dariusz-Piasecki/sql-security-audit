@@ -1,6 +1,6 @@
 # Apply Filters to SQL Queries
 
-**Author:** Dariusz Piasecki  
+**Author:** Dariusz Piasecki 
 **Project:** SQL Security Analysis & Database Investigation
 
 ---
